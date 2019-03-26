@@ -484,21 +484,21 @@ extension GridView {
         let anyVertically: [GridViewScrollPosition] = [.top, .centeredVertically, .bottom, .topFit, .bottomFit]
         let offsetY: CGFloat
         switch position {
-        case let p where p.contains(.top),
-             let p where p.contains(anyVertically) == false && rect.minY < currentOffset.y:
+        case let p where p.contains([.top]),
+             let p where p.containsMember(anyVertically) == false && rect.minY < currentOffset.y:
             offsetY = frame.minY
             
-        case let p where p.contains(.topFit):
+        case let p where p.contains([.topFit]):
             offsetY = 0
             
-        case let p where p.contains(.centeredVertically):
+        case let p where p.contains([.centeredVertically]):
             offsetY = frame.minY - (superviewFrame.midY - rect.height / 2)
             
-        case let p where p.contains(.bottom),
-             let p where p.contains(anyVertically) == false && rect.maxY > currentOffset.y + superviewFrame.maxY:
+        case let p where p.contains([.bottom]),
+             let p where p.containsMember(anyVertically) == false && rect.maxY > currentOffset.y + superviewFrame.maxY:
             offsetY = frame.minY - (superviewFrame.maxY - rect.height)
             
-        case let p where p.contains(.bottomFit):
+        case let p where p.contains([.bottomFit]):
             offsetY = frame.minY - (superviewFrame.maxY - rect.height) + (superviewFrame.maxY - frame.maxY)
             
         default:
@@ -515,21 +515,21 @@ extension GridView {
         let anyHorizontally: [GridViewScrollPosition] = [.left, .centeredHorizontally, .right, .leftFit, .rightFit]
         let offsetX: CGFloat
         switch position {
-        case let p where p.contains(.leftFit),
-             let p where p.contains(anyHorizontally) == false && rect.minX < currentOffset.x:
+        case let p where p.contains([.leftFit]),
+             let p where p.containsMember(anyHorizontally) == false && rect.minX < currentOffset.x:
             offsetX = 0
             
-        case let p where p.contains(.left):
+        case let p where p.contains([.left]):
             offsetX = frame.minX
             
-        case let p where p.contains(.centeredHorizontally):
+        case let p where p.contains([.centeredHorizontally]):
             offsetX = frame.minX - (superviewFrame.midX - rect.width / 2)
             
-        case let p where p.contains(.right),
-             let p where p.contains(anyHorizontally) == false && rect.maxX > currentOffset.x + superviewFrame.maxX:
+        case let p where p.contains([.right]),
+             let p where p.containsMember(anyHorizontally) == false && rect.maxX > currentOffset.x + superviewFrame.maxX:
             offsetX = frame.minX - (superviewFrame.maxX - rect.width)
             
-        case let p where p.contains(.rightFit):
+        case let p where p.contains([.rightFit]):
             offsetX = frame.minX - (superviewFrame.maxX - rect.width) + (superviewFrame.maxX - frame.maxX)
             
         default:

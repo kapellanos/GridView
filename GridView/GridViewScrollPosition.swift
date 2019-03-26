@@ -31,9 +31,9 @@ public struct GridViewScrollPosition: OptionSet {
 }
 
 extension GridViewScrollPosition {
-    func contains(_ members: [GridViewScrollPosition]) -> Bool {
+    func containsMember(_ members: [GridViewScrollPosition]) -> Bool {
         for member in members {
-            if contains(member) {
+            if contains([member]) {
                 return true
             }
         }
